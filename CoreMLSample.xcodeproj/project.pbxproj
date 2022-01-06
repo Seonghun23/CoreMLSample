@@ -62,8 +62,7 @@
 		148AA36B2786F4000031DAF0 /* CoreMLSample */ = {
 			isa = PBXGroup;
 			children = (
-				148AA36C2786F4000031DAF0 /* AppDelegate.swift */,
-				148AA36E2786F4000031DAF0 /* SceneDelegate.swift */,
+				148AA38B2787313F0031DAF0 /* App */,
 				148AA38327872EF70031DAF0 /* Model */,
 				148AA38227872EED0031DAF0 /* ViewController */,
 				148AA386278730C90031DAF0 /* Extensions */,
@@ -98,6 +97,15 @@
 				148AA389278731030031DAF0 /* VNClassificationObservation+confidenceString.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		148AA38B2787313F0031DAF0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				148AA36C2786F4000031DAF0 /* AppDelegate.swift */,
+				148AA36E2786F4000031DAF0 /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
