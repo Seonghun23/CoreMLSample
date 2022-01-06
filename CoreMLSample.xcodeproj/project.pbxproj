@@ -15,6 +15,7 @@
 		148AA3812787074B0031DAF0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA3802787074B0031DAF0 /* TabBarController.swift */; };
 		148AA38527872F100031DAF0 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 148AA38427872F100031DAF0 /* MobileNetV2.mlmodel */; };
 		148AA388278730D90031DAF0 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA387278730D90031DAF0 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
+		148AA38A278731030031DAF0 /* VNClassificationObservation+confidenceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA389278731030031DAF0 /* VNClassificationObservation+confidenceString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		148AA3802787074B0031DAF0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		148AA38427872F100031DAF0 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		148AA387278730D90031DAF0 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
+		148AA389278731030031DAF0 /* VNClassificationObservation+confidenceString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNClassificationObservation+confidenceString.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				148AA387278730D90031DAF0 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
+				148AA389278731030031DAF0 /* VNClassificationObservation+confidenceString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				148AA3712786F4000031DAF0 /* ViewController.swift in Sources */,
 				148AA3812787074B0031DAF0 /* TabBarController.swift in Sources */,
 				148AA36D2786F4000031DAF0 /* AppDelegate.swift in Sources */,
+				148AA38A278731030031DAF0 /* VNClassificationObservation+confidenceString.swift in Sources */,
 				148AA38527872F100031DAF0 /* MobileNetV2.mlmodel in Sources */,
 				148AA388278730D90031DAF0 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
 				148AA36F2786F4000031DAF0 /* SceneDelegate.swift in Sources */,
