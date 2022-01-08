@@ -74,8 +74,7 @@ final class ViewController: UIViewController {
         
         predictor.initialize { [weak self] in
             self?.updatePredictionLabel("Ready for Prediction")
-            self?.cameraButton.isHidden = false
-            self?.albumButton.isHidden = false
+            self?.showButtons()
         }
     }
     
@@ -138,6 +137,13 @@ extension ViewController {
     private func updatePredictionLabel(_ message: String) {
         DispatchQueue.main.async {
             self.predictionResultLabel.text = message
+        }
+    }
+    
+    private func showButtons() {
+        DispatchQueue.main.async {
+            self.cameraButton.isHidden = false
+            self.albumButton.isHidden = false
         }
     }
 }
