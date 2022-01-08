@@ -29,19 +29,35 @@ final class DownloadModelImagePredictor: ImagePredictable {
         }
     }
     
-    // TODO: Should Implement
     func makePredictions(for photo: UIImage, completionHandler: @escaping ImagePredictionHandler) {
-        
+        let orientation = CGImagePropertyOrientation(photo.imageOrientation)
+
+        guard let photoImage = photo.cgImage else {
+            completionHandler(.failure(PredictorError.unavailableImage))
+            return
+        }
+
+        do {
+            let imageClassificationRequest = try createImageClassificationRequest()
+            predictionHandlers[imageClassificationRequest] = completionHandler
+
+            let handler = VNImageRequestHandler(cgImage: photoImage, orientation: orientation)
+            let requests: [VNRequest] = [imageClassificationRequest]
+
+            try handler.perform(requests)
+        } catch let error {
+            completionHandler(.failure(error))
+        }
     }
     
     private var imageClassifier: VNCoreMLModel?
-    
+    private var predictionHandlers = [VNRequest: ImagePredictionHandler]()
+
     private var modelDescriptionURL: URL {
         FileManager.default.temporaryDirectory
             .appendingPathComponent("MobileNetV2")
             .appendingPathExtension("mlmodel")
     }
-    
     private var modelURL: URL {
         URL(string: "https://ml-assets.apple.com/coreml/models/Image/ImageClassification/MobileNetV2/MobileNetV2.mlmodel")!
     }
@@ -69,5 +85,48 @@ final class DownloadModelImagePredictor: ImagePredictable {
                 fatalError("Failure to save model - error(\(error.localizedDescription)")
             }
         }.resume()
+    }
+    
+    private func createImageClassificationRequest() throws -> VNImageBasedRequest {
+        guard let imageClassifier = imageClassifier else {
+            throw PredictorError.notInitialized
+        }
+        
+        let imageClassificationRequest = VNCoreMLRequest(
+            model: imageClassifier,
+            completionHandler: visionRequestHandler
+        )
+
+        imageClassificationRequest.imageCropAndScaleOption = .centerCrop
+        return imageClassificationRequest
+    }
+    
+    private func visionRequestHandler(_ request: VNRequest, error: Error?) {
+        guard let predictionHandler = predictionHandlers.removeValue(forKey: request) else {
+            fatalError("Every request must have a prediction handler.")
+        }
+        
+        if let error = error {
+            predictionHandler(.failure(error))
+            return
+        }
+
+        if request.results == nil {
+            predictionHandler(.failure(PredictorError.noResult))
+            return
+        }
+
+        guard let observations = request.results as? [VNClassificationObservation] else {
+            predictionHandler(.failure(PredictorError.wrongResult("\(type(of: request.results))")))
+            return
+        }
+
+        let predictions = observations.map { observation in
+            Prediction(
+                classification: observation.identifier,
+                confidencePercentage: observation.confidencePercentageString
+            )
+        }
+        predictionHandler(.success(predictions))
     }
 }
