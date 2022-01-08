@@ -12,6 +12,7 @@ final class ViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -67,6 +68,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         
         setLayout()
+        setButtonsAction()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -117,6 +119,26 @@ final class ViewController: UIViewController {
             albumButton.centerYAnchor.constraint(equalTo: predictionView.centerYAnchor)
         ])
         albumButton.setContentCompressionResistancePriority(.required, for: .horizontal)
+    }
+    
+    private func setButtonsAction() {
+        cameraButton.addAction(
+            UIAction { [self] _ in
+                guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+                    present(photoPicker, animated: false)
+                    return
+                }
+
+                present(cameraPicker, animated: false)
+            },
+            for: .touchUpInside
+        )
+        albumButton.addAction(
+            UIAction { [self] _ in
+                present(photoPicker, animated: false)
+            },
+            for: .touchUpInside
+        )
     }
 }
 
