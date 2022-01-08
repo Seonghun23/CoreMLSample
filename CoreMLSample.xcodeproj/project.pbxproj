@@ -16,6 +16,7 @@
 		148AA38527872F100031DAF0 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 148AA38427872F100031DAF0 /* MobileNetV2.mlmodel */; };
 		148AA388278730D90031DAF0 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA387278730D90031DAF0 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
 		148AA38A278731030031DAF0 /* VNClassificationObservation+confidenceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA389278731030031DAF0 /* VNClassificationObservation+confidenceString.swift */; };
+		14EC6F79278987BE009045C8 /* ImagePredictable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC6F78278987BE009045C8 /* ImagePredictable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		148AA38427872F100031DAF0 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		148AA387278730D90031DAF0 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
 		148AA389278731030031DAF0 /* VNClassificationObservation+confidenceString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNClassificationObservation+confidenceString.swift"; sourceTree = "<group>"; };
+		14EC6F78278987BE009045C8 /* ImagePredictable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePredictable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				148AA38B2787313F0031DAF0 /* App */,
 				148AA38327872EF70031DAF0 /* Model */,
+				14EC6F77278987B0009045C8 /* ImagePredictor */,
 				148AA38227872EED0031DAF0 /* ViewController */,
 				148AA386278730C90031DAF0 /* Extensions */,
 				148AA3752786F4010031DAF0 /* Assets.xcassets */,
@@ -106,6 +109,14 @@
 				148AA36E2786F4000031DAF0 /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		14EC6F77278987B0009045C8 /* ImagePredictor */ = {
+			isa = PBXGroup;
+			children = (
+				14EC6F78278987BE009045C8 /* ImagePredictable.swift */,
+			);
+			path = ImagePredictor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 				148AA3712786F4000031DAF0 /* ViewController.swift in Sources */,
 				148AA3812787074B0031DAF0 /* TabBarController.swift in Sources */,
 				148AA36D2786F4000031DAF0 /* AppDelegate.swift in Sources */,
+				14EC6F79278987BE009045C8 /* ImagePredictable.swift in Sources */,
 				148AA38A278731030031DAF0 /* VNClassificationObservation+confidenceString.swift in Sources */,
 				148AA38527872F100031DAF0 /* MobileNetV2.mlmodel in Sources */,
 				148AA388278730D90031DAF0 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
