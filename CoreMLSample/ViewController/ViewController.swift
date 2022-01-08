@@ -105,3 +105,24 @@ final class ViewController: UIViewController {
         albumButton.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
 }
+
+extension ViewController {
+    func userSelectedPhoto(_ photo: UIImage) {
+        updateImage(photo)
+        updatePredictionLabel("Making predictions for the photo...")
+        
+        // TODO: Implement Classify Image
+    }
+    
+    private func updateImage(_ image: UIImage) {
+        DispatchQueue.main.async {
+            self.imageView.image = image
+        }
+    }
+
+    private func updatePredictionLabel(_ message: String) {
+        DispatchQueue.main.async {
+            self.predictionResultLabel.text = message
+        }
+    }
+}
