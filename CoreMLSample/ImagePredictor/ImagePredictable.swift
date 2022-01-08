@@ -12,4 +12,4 @@ protocol ImagePredictable {
     func makePredictions(for photo: UIImage, completionHandler: @escaping ImagePredictionHandler) throws
 }
 
-typealias ImagePredictionHandler = (_ predictions: [Prediction]?, _ error: Error?) -> Void
+typealias ImagePredictionHandler = (_ result: Result<[Prediction], Error>) -> Void

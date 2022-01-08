@@ -28,7 +28,7 @@ final class InAppModelImagePredictor: ImagePredictable {
         let orientation = CGImagePropertyOrientation(photo.imageOrientation)
 
         guard let photoImage = photo.cgImage else {
-            completionHandler(nil, PredictorError.unavailableImage)
+            completionHandler(.failure(PredictorError.unavailableImage))
             return
         }
 
@@ -41,7 +41,7 @@ final class InAppModelImagePredictor: ImagePredictable {
 
             try handler.perform(requests)
         } catch let error {
-            completionHandler(nil, error)
+            completionHandler(.failure(error))
         }
     }
     
@@ -68,17 +68,17 @@ final class InAppModelImagePredictor: ImagePredictable {
         }
         
         if let error = error {
-            predictionHandler(nil, error)
+            predictionHandler(.failure(error))
             return
         }
 
         if request.results == nil {
-            predictionHandler(nil, PredictorError.noResult)
+            predictionHandler(.failure(PredictorError.noResult))
             return
         }
 
         guard let observations = request.results as? [VNClassificationObservation] else {
-            predictionHandler(nil, PredictorError.wrongResult("\(type(of: request.results))"))
+            predictionHandler(.failure(PredictorError.wrongResult("\(type(of: request.results))")))
             return
         }
 
@@ -88,6 +88,6 @@ final class InAppModelImagePredictor: ImagePredictable {
                 confidencePercentage: observation.confidencePercentageString
             )
         }
-        predictionHandler(predictions, nil)
+        predictionHandler(.success(predictions))
     }
 }

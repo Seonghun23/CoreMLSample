@@ -135,22 +135,18 @@ extension ViewController {
         do {
             try self.predictor.makePredictions(
                 for: image,
-                   completionHandler: { [weak self] predictions, error in
+                   completionHandler: { [weak self] result in
                        guard let self = self else { return }
                        
-                       if let error = error {
-                           self.updatePredictionLabel("Failure to prediction. \(error.localizedDescription)")
-                       }
-                       
-                       guard let predictions = predictions else {
-                           self.updatePredictionLabel("No predictions. (Check console log.)")
-                           return
-                       }
-                       
-                       let formattedPredictions = self.formatPredictions(predictions)
+                       switch result {
+                       case .success(let predictions):
+                           let formattedPredictions = self.formatPredictions(predictions)
 
-                       let predictionString = formattedPredictions.joined(separator: "\n")
-                       self.updatePredictionLabel(predictionString)
+                           let predictionString = formattedPredictions.joined(separator: "\n")
+                           self.updatePredictionLabel(predictionString)
+                       case .failure(let error):
+                           self.updatePredictionLabel("Failure to prediction. \(error.localizedDescription)")
+                       } 
                    }
             )
         } catch {
