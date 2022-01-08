@@ -10,6 +10,7 @@
 		143417C92789A43B00353232 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417C82789A43B00353232 /* Prediction.swift */; };
 		143417CC2789A52600353232 /* PredictorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417CB2789A52600353232 /* PredictorError.swift */; };
 		143417D02789C26800353232 /* ViewController+CameraPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417CF2789C26800353232 /* ViewController+CameraPicker.swift */; };
+		143417D22789C2C600353232 /* ViewController+PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417D12789C2C600353232 /* ViewController+PhotoPicker.swift */; };
 		148AA36D2786F4000031DAF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA36C2786F4000031DAF0 /* AppDelegate.swift */; };
 		148AA36F2786F4000031DAF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA36E2786F4000031DAF0 /* SceneDelegate.swift */; };
 		148AA3712786F4000031DAF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA3702786F4000031DAF0 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		143417C82789A43B00353232 /* Prediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
 		143417CB2789A52600353232 /* PredictorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictorError.swift; sourceTree = "<group>"; };
 		143417CF2789C26800353232 /* ViewController+CameraPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CameraPicker.swift"; sourceTree = "<group>"; };
+		143417D12789C2C600353232 /* ViewController+PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+PhotoPicker.swift"; sourceTree = "<group>"; };
 		148AA3692786F4000031DAF0 /* CoreMLSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		148AA36C2786F4000031DAF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		148AA36E2786F4000031DAF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				148AA3702786F4000031DAF0 /* ViewController.swift */,
 				143417CF2789C26800353232 /* ViewController+CameraPicker.swift */,
+				143417D12789C2C600353232 /* ViewController+PhotoPicker.swift */,
 				148AA3802787074B0031DAF0 /* TabBarController.swift */,
 			);
 			path = ViewController;
@@ -222,6 +225,7 @@
 			files = (
 				14EC6F7B27898834009045C8 /* InAppModelImagePredictor.swift in Sources */,
 				148AA3712786F4000031DAF0 /* ViewController.swift in Sources */,
+				143417D22789C2C600353232 /* ViewController+PhotoPicker.swift in Sources */,
 				143417D02789C26800353232 /* ViewController+CameraPicker.swift in Sources */,
 				148AA3812787074B0031DAF0 /* TabBarController.swift in Sources */,
 				143417C92789A43B00353232 /* Prediction.swift in Sources */,
