@@ -22,6 +22,7 @@ final class InAppModelImagePredictor: ImagePredictable {
         }
         
         self.imageClassifier = imageClassifierVisionModel
+        completionHandler?()
     }
     
     func makePredictions(for photo: UIImage, completionHandler: @escaping ImagePredictionHandler) {
