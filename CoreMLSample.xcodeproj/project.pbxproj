@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		143417C92789A43B00353232 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417C82789A43B00353232 /* Prediction.swift */; };
+		143417CC2789A52600353232 /* PredictorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417CB2789A52600353232 /* PredictorError.swift */; };
 		148AA36D2786F4000031DAF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA36C2786F4000031DAF0 /* AppDelegate.swift */; };
 		148AA36F2786F4000031DAF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA36E2786F4000031DAF0 /* SceneDelegate.swift */; };
 		148AA3712786F4000031DAF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA3702786F4000031DAF0 /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		143417C82789A43B00353232 /* Prediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
+		143417CB2789A52600353232 /* PredictorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictorError.swift; sourceTree = "<group>"; };
 		148AA3692786F4000031DAF0 /* CoreMLSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		148AA36C2786F4000031DAF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		148AA36E2786F4000031DAF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 				143417C82789A43B00353232 /* Prediction.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		143417CA2789A50D00353232 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				143417CB2789A52600353232 /* PredictorError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		148AA3602786F4000031DAF0 = {
@@ -128,6 +138,7 @@
 		14EC6F77278987B0009045C8 /* ImagePredictor */ = {
 			isa = PBXGroup;
 			children = (
+				143417CA2789A50D00353232 /* Error */,
 				143417C72789A43500353232 /* Model */,
 				14EC6F78278987BE009045C8 /* ImagePredictable.swift */,
 				14EC6F7A27898834009045C8 /* InAppModelImagePredictor.swift */,
@@ -211,6 +222,7 @@
 				148AA3812787074B0031DAF0 /* TabBarController.swift in Sources */,
 				143417C92789A43B00353232 /* Prediction.swift in Sources */,
 				148AA36D2786F4000031DAF0 /* AppDelegate.swift in Sources */,
+				143417CC2789A52600353232 /* PredictorError.swift in Sources */,
 				14EC6F79278987BE009045C8 /* ImagePredictable.swift in Sources */,
 				148AA38A278731030031DAF0 /* VNClassificationObservation+confidenceString.swift in Sources */,
 				14EC6F7D2789888E009045C8 /* DownloadModelImagePredictor.swift in Sources */,

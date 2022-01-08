@@ -9,7 +9,6 @@ import Vision
 import UIKit
 
 final class InAppModelImagePredictor: ImagePredictable {
-    private var imageClassifier: VNCoreMLModel?
     
     func initialize() {
         let defaultConfig = MLModelConfiguration()
@@ -23,5 +22,72 @@ final class InAppModelImagePredictor: ImagePredictable {
         }
         
         self.imageClassifier = imageClassifierVisionModel
+    }
+    
+    func makePredictions(for photo: UIImage, completionHandler: @escaping ImagePredictionHandler) {
+        let orientation = CGImagePropertyOrientation(photo.imageOrientation)
+
+        guard let photoImage = photo.cgImage else {
+            completionHandler(nil, PredictorError.unavailableImage)
+            return
+        }
+
+        do {
+            let imageClassificationRequest = try createImageClassificationRequest()
+            predictionHandlers[imageClassificationRequest] = completionHandler
+
+            let handler = VNImageRequestHandler(cgImage: photoImage, orientation: orientation)
+            let requests: [VNRequest] = [imageClassificationRequest]
+
+            try handler.perform(requests)
+        } catch let error {
+            completionHandler(nil, error)
+        }
+    }
+    
+    private var imageClassifier: VNCoreMLModel?
+    private var predictionHandlers = [VNRequest: ImagePredictionHandler]()
+    
+    private func createImageClassificationRequest() throws -> VNImageBasedRequest {
+        guard let imageClassifier = imageClassifier else {
+            throw PredictorError.notInitialized
+        }
+        
+        let imageClassificationRequest = VNCoreMLRequest(
+            model: imageClassifier,
+            completionHandler: visionRequestHandler
+        )
+
+        imageClassificationRequest.imageCropAndScaleOption = .centerCrop
+        return imageClassificationRequest
+    }
+    
+    private func visionRequestHandler(_ request: VNRequest, error: Error?) {
+        guard let predictionHandler = predictionHandlers.removeValue(forKey: request) else {
+            fatalError("Every request must have a prediction handler.")
+        }
+        
+        if let error = error {
+            predictionHandler(nil, error)
+            return
+        }
+
+        if request.results == nil {
+            predictionHandler(nil, PredictorError.noResult)
+            return
+        }
+
+        guard let observations = request.results as? [VNClassificationObservation] else {
+            predictionHandler(nil, PredictorError.wrongResult("\(type(of: request.results))"))
+            return
+        }
+
+        let predictions = observations.map { observation in
+            Prediction(
+                classification: observation.identifier,
+                confidencePercentage: observation.confidencePercentageString
+            )
+        }
+        predictionHandler(predictions, nil)
     }
 }
