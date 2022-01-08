@@ -28,7 +28,7 @@ final class ViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.numberOfLines = 2
-        label.text = "Waiting for Prediction"
+        label.text = "Predictor is Initializing"
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -37,6 +37,7 @@ final class ViewController: UIViewController {
     private let cameraButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "camera"), for: .normal)
+        button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -44,6 +45,7 @@ final class ViewController: UIViewController {
     private let albumButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "photo"), for: .normal)
+        button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -65,6 +67,16 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         
         setLayout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        predictor.initialize { [weak self] in
+            self?.updatePredictionLabel("Ready for Prediction")
+            self?.cameraButton.isHidden = false
+            self?.albumButton.isHidden = false
+        }
     }
     
     private func setLayout() {

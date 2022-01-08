@@ -10,7 +10,7 @@ import UIKit
 final class DownloadModelImagePredictor: ImagePredictable {
     
     // TODO: Should Implement
-    func initialize(completionHandler: () -> Void?) {
+    func initialize(completionHandler: (() -> Void)?) {
         
     }
     
