@@ -72,9 +72,11 @@ final class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        predictor.initialize { [weak self] in
-            self?.updatePredictionLabel("Ready for Prediction")
-            self?.showButtons()
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.predictor.initialize {
+                self?.updatePredictionLabel("Ready for Prediction")
+                self?.showButtons()
+            }
         }
     }
     
