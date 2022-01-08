@@ -11,7 +11,7 @@ import UIKit
 final class DownloadModelWithVisionImagePredictor: ImagePredictable {
     
     func initialize(completionHandler: (() -> Void)?) {
-        downloadModel { [weak self] url in
+        downloader.downloadModel { [weak self] url in
             guard let compiledModelURL = try? MLModel.compileModel(at: url) else {
                 fatalError("Failure to get an compiled model URL.")
             }
@@ -50,42 +50,10 @@ final class DownloadModelWithVisionImagePredictor: ImagePredictable {
         }
     }
     
+    private let downloader: ModelDownloader = ModelDownloader()
+    
     private var imageClassifier: VNCoreMLModel?
     private var predictionHandlers = [VNRequest: ImagePredictionHandler]()
-
-    private var modelDescriptionURL: URL {
-        FileManager.default.temporaryDirectory
-            .appendingPathComponent("MobileNetV2")
-            .appendingPathExtension("mlmodel")
-    }
-    private var modelURL: URL {
-        URL(string: "https://ml-assets.apple.com/coreml/models/Image/ImageClassification/MobileNetV2/MobileNetV2.mlmodel")!
-    }
-    
-    private func downloadModel(completionHandler: @escaping (URL) -> Void) {
-        URLSession.shared.dataTask(with: modelURL) { data, response, error in
-            if let error = error {
-                fatalError("Failure to download - error(\(error.localizedDescription)).")
-            }
-            
-            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
-            
-            guard 200..<300 ~= statusCode else {
-                fatalError("Failure to download - code: \(statusCode)")
-            }
-            
-            guard let data = data else {
-                fatalError("Downloaded data is wrong.")
-            }
-            
-            do {
-                try data.write(to: self.modelDescriptionURL)
-                completionHandler(self.modelDescriptionURL)
-            } catch let error {
-                fatalError("Failure to save model - error(\(error.localizedDescription)")
-            }
-        }.resume()
-    }
     
     private func createImageClassificationRequest() throws -> VNImageBasedRequest {
         guard let imageClassifier = imageClassifier else {

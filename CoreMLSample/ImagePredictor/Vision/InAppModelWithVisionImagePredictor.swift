@@ -12,7 +12,7 @@ final class InAppModelWithVisionImagePredictor: ImagePredictable {
     
     func initialize(completionHandler: (() -> Void)?) {
         let defaultConfig = MLModelConfiguration()
-        guard let imageClassifier = try? MobileNetV2(configuration: defaultConfig) else {
+        guard let imageClassifier = try? InAppMobileNet(configuration: defaultConfig) else {
             fatalError("Failure to create an MobileNetV2.")
         }
 
