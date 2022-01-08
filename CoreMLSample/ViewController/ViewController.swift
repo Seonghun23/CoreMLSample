@@ -49,6 +49,7 @@ final class ViewController: UIViewController {
     }()
     
     private let predictor: ImagePredictable
+    private let predictionsToShow: Int = 2
     
     init(predictor: ImagePredictable) {
         self.predictor = predictor
@@ -111,7 +112,9 @@ extension ViewController {
         updateImage(photo)
         updatePredictionLabel("Making predictions for the photo...")
         
-        // TODO: Implement Classify Image
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.classifyImage(photo)
+        }
     }
     
     private func updateImage(_ image: UIImage) {
@@ -124,5 +127,48 @@ extension ViewController {
         DispatchQueue.main.async {
             self.predictionResultLabel.text = message
         }
+    }
+}
+
+extension ViewController {
+    private func classifyImage(_ image: UIImage) {
+        do {
+            try self.predictor.makePredictions(
+                for: image,
+                   completionHandler: { [weak self] predictions, error in
+                       guard let self = self else { return }
+                       
+                       if let error = error {
+                           self.updatePredictionLabel("Failure to prediction. \(error.localizedDescription)")
+                       }
+                       
+                       guard let predictions = predictions else {
+                           self.updatePredictionLabel("No predictions. (Check console log.)")
+                           return
+                       }
+                       
+                       let formattedPredictions = self.formatPredictions(predictions)
+
+                       let predictionString = formattedPredictions.joined(separator: "\n")
+                       self.updatePredictionLabel(predictionString)
+                   }
+            )
+        } catch {
+            print("Vision was unable to make a prediction...\n\n\(error.localizedDescription)")
+        }
+    }
+
+    private func formatPredictions(_ predictions: [Prediction]) -> [String] {
+        let topPredictions: [String] = predictions.prefix(predictionsToShow).map { prediction in
+            var name = prediction.classification
+
+            if let firstComma = name.firstIndex(of: ",") {
+                name = String(name.prefix(upTo: firstComma))
+            }
+
+            return "\(name) - \(prediction.confidencePercentage)%"
+        }
+
+        return topPredictions
     }
 }
