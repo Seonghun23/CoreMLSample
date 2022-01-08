@@ -9,4 +9,8 @@ import Foundation
 
 final class DownloadModelImagePredictor: ImagePredictable {
     
+    // TODO: Should Implement
+    func initialize() {
+        
+    }
 }
