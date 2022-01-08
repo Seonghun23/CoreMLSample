@@ -12,7 +12,7 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let inAppViewController = ViewController(predictor: InAppModelImagePredictor())
+        let inAppViewController = ViewController(predictor: InAppModelWithVisionImagePredictor())
         inAppViewController.view.backgroundColor = .red
         let inAppBarItem = UITabBarItem(
             title: "InApp",
@@ -21,7 +21,7 @@ final class TabBarController: UITabBarController {
         )
         inAppViewController.tabBarItem = inAppBarItem
         
-        let downloadViewController = ViewController(predictor: DownloadModelImagePredictor())
+        let downloadViewController = ViewController(predictor: DownloadModelWithVisionImagePredictor())
         downloadViewController.view.backgroundColor = .purple
         let downloadBarItem = UITabBarItem(
             title: "Download",

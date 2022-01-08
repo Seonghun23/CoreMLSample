@@ -1,5 +1,5 @@
 //
-//  InAppModelImagePredictor.swift
+//  InAppModelWithVisionImagePredictor.swift
 //  CoreMLSample
 //
 //  Created by Seonghun Kim on 2022/01/08.
@@ -8,7 +8,7 @@
 import Vision
 import UIKit
 
-final class InAppModelImagePredictor: ImagePredictable {
+final class InAppModelWithVisionImagePredictor: ImagePredictable {
     
     func initialize(completionHandler: (() -> Void)?) {
         let defaultConfig = MLModelConfiguration()

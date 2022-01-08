@@ -1,5 +1,5 @@
 //
-//  DownloadModelImagePredictor.swift
+//  DownloadModelWithVisionImagePredictor.swift
 //  CoreMLSample
 //
 //  Created by Seonghun Kim on 2022/01/08.
@@ -8,7 +8,7 @@
 import Vision
 import UIKit
 
-final class DownloadModelImagePredictor: ImagePredictable {
+final class DownloadModelWithVisionImagePredictor: ImagePredictable {
     
     func initialize(completionHandler: (() -> Void)?) {
         downloadModel { [weak self] url in
