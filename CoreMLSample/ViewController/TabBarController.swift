@@ -12,7 +12,7 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let inAppViewController = ViewController(predictor: InAppModelWithVisionImagePredictor())
+        let inAppViewController = ViewController(predictor: InAppModelImagePredictor())
         inAppViewController.view.backgroundColor = .red
         let inAppBarItem = UITabBarItem(
             title: "InApp",

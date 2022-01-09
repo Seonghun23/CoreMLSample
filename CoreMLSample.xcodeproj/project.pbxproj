@@ -12,6 +12,7 @@
 		143417D02789C26800353232 /* ViewController+CameraPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417CF2789C26800353232 /* ViewController+CameraPicker.swift */; };
 		143417D22789C2C600353232 /* ViewController+PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417D12789C2C600353232 /* ViewController+PhotoPicker.swift */; };
 		143417D6278A033000353232 /* ModelDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417D5278A033000353232 /* ModelDownloader.swift */; };
+		143417D8278ADE1000353232 /* InAppModelImagePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417D7278ADE1000353232 /* InAppModelImagePredictor.swift */; };
 		148AA36D2786F4000031DAF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA36C2786F4000031DAF0 /* AppDelegate.swift */; };
 		148AA36F2786F4000031DAF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA36E2786F4000031DAF0 /* SceneDelegate.swift */; };
 		148AA3712786F4000031DAF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA3702786F4000031DAF0 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 		143417CF2789C26800353232 /* ViewController+CameraPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CameraPicker.swift"; sourceTree = "<group>"; };
 		143417D12789C2C600353232 /* ViewController+PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+PhotoPicker.swift"; sourceTree = "<group>"; };
 		143417D5278A033000353232 /* ModelDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDownloader.swift; sourceTree = "<group>"; };
+		143417D7278ADE1000353232 /* InAppModelImagePredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppModelImagePredictor.swift; sourceTree = "<group>"; };
 		148AA3692786F4000031DAF0 /* CoreMLSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		148AA36C2786F4000031DAF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		148AA36E2786F4000031DAF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				143417C72789A43500353232 /* Model */,
 				143417D32789EEF200353232 /* Vision */,
 				14EC6F78278987BE009045C8 /* ImagePredictable.swift */,
+				143417D7278ADE1000353232 /* InAppModelImagePredictor.swift */,
 				143417D4278A031E00353232 /* Downloader */,
 			);
 			path = ImagePredictor;
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14EC6F7B27898834009045C8 /* InAppModelWithVisionImagePredictor.swift in Sources */,
+				143417D8278ADE1000353232 /* InAppModelImagePredictor.swift in Sources */,
 				148AA3712786F4000031DAF0 /* ViewController.swift in Sources */,
 				143417D6278A033000353232 /* ModelDownloader.swift in Sources */,
 				143417D22789C2C600353232 /* ViewController+PhotoPicker.swift in Sources */,
