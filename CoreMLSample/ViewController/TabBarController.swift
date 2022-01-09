@@ -21,7 +21,7 @@ final class TabBarController: UITabBarController {
         )
         inAppViewController.tabBarItem = inAppBarItem
         
-        let downloadViewController = ViewController(predictor: DownloadModelWithVisionImagePredictor())
+        let downloadViewController = ViewController(predictor: DownloadModelImagePredictor())
         downloadViewController.view.backgroundColor = .purple
         let downloadBarItem = UITabBarItem(
             title: "Download",

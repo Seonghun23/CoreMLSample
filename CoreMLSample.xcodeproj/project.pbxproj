@@ -16,6 +16,7 @@
 		143417DA278AE17C00353232 /* DownloadMobileNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417D9278AE17C00353232 /* DownloadMobileNet.swift */; };
 		143417DD278AE38C00353232 /* DownloadMobileNetInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417DC278AE38C00353232 /* DownloadMobileNetInput.swift */; };
 		143417DF278AE52D00353232 /* DownloadMobileNetOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417DE278AE52D00353232 /* DownloadMobileNetOutput.swift */; };
+		143417E1278AE6ED00353232 /* DownloadModelImagePredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143417E0278AE6ED00353232 /* DownloadModelImagePredictor.swift */; };
 		148AA36D2786F4000031DAF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA36C2786F4000031DAF0 /* AppDelegate.swift */; };
 		148AA36F2786F4000031DAF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA36E2786F4000031DAF0 /* SceneDelegate.swift */; };
 		148AA3712786F4000031DAF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148AA3702786F4000031DAF0 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 		143417D9278AE17C00353232 /* DownloadMobileNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadMobileNet.swift; sourceTree = "<group>"; };
 		143417DC278AE38C00353232 /* DownloadMobileNetInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadMobileNetInput.swift; sourceTree = "<group>"; };
 		143417DE278AE52D00353232 /* DownloadMobileNetOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadMobileNetOutput.swift; sourceTree = "<group>"; };
+		143417E0278AE6ED00353232 /* DownloadModelImagePredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadModelImagePredictor.swift; sourceTree = "<group>"; };
 		148AA3692786F4000031DAF0 /* CoreMLSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		148AA36C2786F4000031DAF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		148AA36E2786F4000031DAF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				143417D32789EEF200353232 /* Vision */,
 				14EC6F78278987BE009045C8 /* ImagePredictable.swift */,
 				143417D7278ADE1000353232 /* InAppModelImagePredictor.swift */,
+				143417E0278AE6ED00353232 /* DownloadModelImagePredictor.swift */,
 				143417D4278A031E00353232 /* Downloader */,
 			);
 			path = ImagePredictor;
@@ -278,6 +281,7 @@
 				148AA38527872F100031DAF0 /* InAppMobileNet.mlmodel in Sources */,
 				148AA388278730D90031DAF0 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
 				143417DA278AE17C00353232 /* DownloadMobileNet.swift in Sources */,
+				143417E1278AE6ED00353232 /* DownloadModelImagePredictor.swift in Sources */,
 				143417DD278AE38C00353232 /* DownloadMobileNetInput.swift in Sources */,
 				143417DF278AE52D00353232 /* DownloadMobileNetOutput.swift in Sources */,
 				148AA36F2786F4000031DAF0 /* SceneDelegate.swift in Sources */,

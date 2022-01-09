@@ -9,7 +9,7 @@ import UIKit
 
 protocol ImagePredictable {
     func initialize(completionHandler: (() -> Void)?)
-    func makePredictions(for photo: UIImage, completionHandler: @escaping ImagePredictionHandler) throws
+    func makePredictions(for photo: UIImage, completionHandler: @escaping ImagePredictionHandler)
 }
 
 typealias ImagePredictionHandler = (_ result: Result<[Prediction], Error>) -> Void
