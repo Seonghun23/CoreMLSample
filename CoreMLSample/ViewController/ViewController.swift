@@ -174,26 +174,22 @@ extension ViewController {
 
 extension ViewController {
     private func classifyImage(_ image: UIImage) {
-        do {
-            try self.predictor.makePredictions(
-                for: image,
-                   completionHandler: { [weak self] result in
-                       guard let self = self else { return }
+        self.predictor.makePredictions(
+            for: image,
+               completionHandler: { [weak self] result in
+                   guard let self = self else { return }
+                   
+                   switch result {
+                   case .success(let predictions):
+                       let formattedPredictions = self.formatPredictions(predictions)
                        
-                       switch result {
-                       case .success(let predictions):
-                           let formattedPredictions = self.formatPredictions(predictions)
-
-                           let predictionString = formattedPredictions.joined(separator: "\n")
-                           self.updatePredictionLabel(predictionString)
-                       case .failure(let error):
-                           self.updatePredictionLabel("Failure to prediction. \(error.localizedDescription)")
-                       } 
+                       let predictionString = formattedPredictions.joined(separator: "\n")
+                       self.updatePredictionLabel(predictionString)
+                   case .failure(let error):
+                       self.updatePredictionLabel("Failure to prediction. \(error.localizedDescription)")
                    }
-            )
-        } catch {
-            print("Vision was unable to make a prediction...\n\n\(error.localizedDescription)")
-        }
+               }
+        )
     }
 
     private func formatPredictions(_ predictions: [Prediction]) -> [String] {
