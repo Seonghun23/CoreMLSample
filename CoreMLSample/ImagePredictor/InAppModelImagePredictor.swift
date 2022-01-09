@@ -33,12 +33,16 @@ final class InAppModelImagePredictor: ImagePredictable {
         do {
             let input = try InAppMobileNetInput(imageWith: photoImage)
             let output = try imageClassifier.prediction(input: input)
-            let predictions = output.classLabelProbs.map { label, confidence in
-                Prediction(
-                    classification: label,
-                    confidencePercentage: String(format: "%2.1f", confidence * 100)
-                )
-            }.sorted(by: { $0.confidencePercentage > $1.confidencePercentage })
+            let predictions = output.classLabelProbs
+                .map { ($0.key, $0.value) }
+                .sorted(by: { $0.1 > $1.1 })
+                .map { label, confidence in
+                    Prediction(
+                        classification: label,
+                        confidencePercentage: String(format: "%2.1f", confidence * 100)
+                    )
+                }
+            
             completionHandler(.success(predictions))
         } catch let error {
             completionHandler(.failure(error))
