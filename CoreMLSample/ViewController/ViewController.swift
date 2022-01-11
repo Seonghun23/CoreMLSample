@@ -53,6 +53,14 @@ final class ViewController: UIViewController {
     
     private let predictor: ImagePredictable
     private let predictionsToShow: Int = 2
+    private lazy var initialize: Void = {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.predictor.initialize {
+                self?.updatePredictionLabel("Ready for Prediction")
+                self?.showButtons()
+            }
+        }
+    }()
     
     init(predictor: ImagePredictable) {
         self.predictor = predictor
@@ -74,12 +82,7 @@ final class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            self?.predictor.initialize {
-                self?.updatePredictionLabel("Ready for Prediction")
-                self?.showButtons()
-            }
-        }
+        _ = initialize
     }
     
     private func setLayout() {
